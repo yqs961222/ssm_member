@@ -1,10 +1,13 @@
 package com.qfedu.domain.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
  * 品牌表
  */
+@Data
 public class Brand {
     /**
      * 品牌ID

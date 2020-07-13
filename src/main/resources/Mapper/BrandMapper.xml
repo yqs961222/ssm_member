@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mapper.BrandMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.domain.entity.Brand">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="join_time" jdbcType="DATE" property="joinTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+
+  <update id="updateByBrand">
+    update brand_manager
+    <trim prefix="set" suffixOverrides=",">
+      <if test="brand.brandLogo != null and brand.brandLogo != ''">
+        brand_logo = #{brand.brandLogo},
+      </if>
+      <if test="brand.brandName != null and brand.brandName != ''">
+        brand_name = #{brand.brandName},
+      </if>
+      <if test="brand.country != null and brand.country != ''">
+        country = #{brand.country},
+      </if>
+      <if test="brand.description != null and brand.description != ''">
+        description = #{brand.description},
+      </if>
+      <if test="brand.joinTime != null and brand.joinTime != ''">
+        join_time = #{brand.joinTime},
+      </if>
+      <if test="brand.status != null and brand.status != ''">
+        status = #{brand.status},
+      </if>
+    </trim>
+    where id = #{id}
+  </update>
+
+</mapper>
