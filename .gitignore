@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/.gitignore
+src/main/java/com/qfedu/domain/dto/
+src/main/java/com/qfedu/service/
+src/main/java/com/qfedu/utils/
