@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qfedu.mapper.BrandManagerMapper">
-  <resultMap id="BaseResultMap" type="com.qfedu.domain.entity.BrandManager">
+  <resultMap id="BaseResultMap" type="com.qfedu.domain.entity.Brand">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo" />
     <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
@@ -10,5 +10,17 @@
     <result column="join_time" jdbcType="DATE" property="joinTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
+  <select id="selectByNameAndTime" resultMap="BaseResultMap">
+    select id,brand_logo, brand_name, country, description, join_time
+      from brand_manager
+    <trim prefix="where" prefixOverrides="OR">
+      <if test="brandDto.brandName != null">
+        OR brand_name = #{brandDto.brandName}
+      </if>
+     <if test="brandDto.joinTime != null">
+       OR join_time = #{brandDto.joinTime}
+     </if>
+    </trim>
+  </select>
 
 </mapper>
