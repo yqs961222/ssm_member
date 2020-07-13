@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 品牌表
+ * 品牌管理表
  */
 @Data
 public class Brand {
@@ -44,4 +44,8 @@ public class Brand {
      */
     private Integer status;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 第一次测试
 }
