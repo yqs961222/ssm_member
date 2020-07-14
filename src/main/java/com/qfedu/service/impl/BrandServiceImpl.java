@@ -1,6 +1,7 @@
 package com.qfedu.service.impl;
 
 import com.qfedu.domain.entity.Brand;
+import com.qfedu.mapper.BrandMapper;
 import com.qfedu.service.BrandService;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,8 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public int updateByBrand(int id, Brand brand) {
-        int ar = brandMapper.updateByBrand(id, brand);
-        return ar;
+//        int ar = brandMapper.updateByBrand(id, brand);
+        return 0;
     }
 
 }

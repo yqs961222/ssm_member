@@ -52,11 +52,6 @@ public class BrandDetail {
     private String attribute;
 
     /**
-     * 主键id
-     */
-    private int pid;
-
-    /**
      * 主表
      */
     private Brand brand;

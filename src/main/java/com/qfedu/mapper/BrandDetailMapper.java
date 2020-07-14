@@ -53,4 +53,11 @@ public interface BrandDetailMapper {
      * @return 影响的行数
      */
     int updateBannedById(@Param("pid") int pid, @Param("status") int status);
+
+    /**
+     * 查询某商品的详细信息
+     * @param proId 商品id
+     * @return 商品的对象
+     */
+    BrandDetail selectById(@Param("proId") int proId);
 }
