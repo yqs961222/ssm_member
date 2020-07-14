@@ -29,7 +29,7 @@ public class BrandDetail {
     /**
      * 商品的发布时间
      */
-    private String releaseTime;
+    private Date releaseTime;
 
     /**
      * 商品的审核状态, 1 通过, 0 不通过
@@ -50,5 +50,15 @@ public class BrandDetail {
      * 商品属性
      */
     private String attribute;
+
+    /**
+     * 主键id
+     */
+    private int pid;
+
+    /**
+     * 主表
+     */
+    private Brand brand;
 }
 

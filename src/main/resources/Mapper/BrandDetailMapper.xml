@@ -12,5 +12,72 @@
     <result column="brand_id" jdbcType="INTEGER" property="brandId" />
     <result column="attribute" jdbcType="VARCHAR" property="attribute" />
   </resultMap>
+  <resultMap id="collect" type="BrandDetail" extends="BaseResultMap">
+    <collection property="brand" ofType="com.qfedu.domain.entity.Brand" resultMap="com.qfedu.mapper.BrandManagerMapper.BaseResultMap"/>
+  </resultMap>
+    <select id="selectAllById" resultMap="collect">
+      select bd.pro_id,bd.pro_name,bd.old_price,bd.new_price,bd.release_time,bd.examine,bd.status,b.country
+      from brand_detail bd
+      left join brand b on bd.brand_id=b.brand_id
+      where brand_id=#{id}
+      limit #{page},#{size}
+    </select>
+
+  <insert id="insertProduct">
+    insert into brand_detail(pro_id,pro_name,old_price,new_price,examine,status,brand_id,attribute)
+    values (pro_id=#{brandDetail.proId},pro_name=#{brandDetail.proName},old_price=#{brandDetail.oldPrice},
+    new_price=#{brandDetail.newPrice},examine=#{brandDetail.examine},status=#{brandDetail.status},
+    attribute=#{brandDetail.attribute})
+  </insert>
+
+  <delete id="deleteBath">
+    delete from brand_detail
+    where pro_id in
+    <foreach collection="pid" separator="," open="(" close=")" item="pro_id">
+      #{pro_id}
+    </foreach>
+  </delete>
+
+  <delete id="deleteById">
+    delete from brand_detail
+    where pro_id=#{proId}
+  </delete>
+
+  <update id="updateBrand">
+    update brand_detail
+    <trim prefix="set" suffixOverrides=",">
+      <if test="brandDetail.proId != null and brandDetail.proId != ''">
+        pro_id=#{brandDetail.proId},
+      </if>
+      <if test="brandDetail.proName != null and brandDetail.proName != ''">
+        pro_name=#{brandDetail.proName},
+      </if>
+      <if test="brandDetail.oldPrice != null and brandDetail.oldPrice != ''">
+        old_price=#{brandDetail.oldPrice},
+      </if>
+      <if test="brandDetail.newPrice != null and brandDetail.newPrice != ''">
+        new_price=#{brandDetail.newPrice},
+      </if>
+      <if test="brandDetail.examine != null and  brandDetail.examine != ''">
+        examine=#{brandDetail.examine},
+      </if>
+      <if test="brandDetail.status != null and brandDetail.status != ''">
+        status=#{brandDetail.status},
+      </if>
+      <if test="brandDetail.brandId != null and brandDetail.brandId != ''">
+        brand_id=#{brandDetail.brandId},
+      </if>
+      <if test="brandDetail.attribute != null and brandDetail.attribute != ''">
+        attribute=#{brandDetail.attribute}
+      </if>
+      where pid=#{brandDetail.pid}
+    </trim>
+  </update>
+
+  <update id="updateBannedById">
+    update brand_detail
+    set status=#{status}
+    where pid=#{pid}
+  </update>
 
 </mapper>
