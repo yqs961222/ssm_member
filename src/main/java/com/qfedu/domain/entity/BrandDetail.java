@@ -37,7 +37,7 @@ public class BrandDetail {
     private Integer examine;
 
     /**
-     * 状态, 1 启用, 0 禁用
+     * 状态, 1 启用, 0 禁用, 3 假删除
      */
     private Integer status;
 
