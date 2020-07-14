@@ -9,7 +9,7 @@
   </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-context.xml, classpath:spring-mvc.xml</param-value>
+    <param-value>classpath:*.xml</param-value>
   </context-param>
 
   <servlet>

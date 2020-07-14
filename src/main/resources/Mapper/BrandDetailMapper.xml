@@ -12,5 +12,15 @@
     <result column="brand_id" jdbcType="INTEGER" property="brandId" />
     <result column="attribute" jdbcType="VARCHAR" property="attribute" />
   </resultMap>
+    <insert id="insert">
+      insert into brand_detail(pro_id, pro_name, old_price, new_price, release_time, brand_id, attribute)
+        values (#{brandDetail.proId},#{brandDetail.proName},#{brandDetail.oldPrice},#{brandDetail.newPrice},#{brandDetail.releaseTime},#{brandDetail.brandId},#{brandDetail.attribute})
+    </insert>
+  <update id="update">
+    update brand_detail set status = 3 where brand_id in
+    <foreach collection="list" separator="," open="(" close=")" item="id">
+      #{id}
+    </foreach>
+  </update>
 
 </mapper>
