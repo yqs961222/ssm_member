@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qfedu.mapper.BrandManagerMapper">
-  <resultMap id="BaseResultMap" type="com.qfedu.domain.entity.Brand">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo" />
-    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
-    <result column="country" jdbcType="VARCHAR" property="country" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="join_time" jdbcType="DATE" property="joinTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-  </resultMap>
-  <select id="selectByNameAndTime" resultMap="BaseResultMap">
-    select id,brand_logo, brand_name, country, description, join_time
-      from brand_manager
-    <trim prefix="where" prefixOverrides="OR">
-      <if test="brandDto.brandName != null">
-        OR brand_name = #{brandDto.brandName}
-      </if>
-     <if test="brandDto.joinTime != null">
-       OR join_time = #{brandDto.joinTime}
-     </if>
-    </trim>
-  </select>
+    <resultMap id="BaseResultMap" type="com.qfedu.domain.entity.Brand">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo"/>
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="join_time" jdbcType="DATE" property="joinTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+    <select id="selectByNameAndTime" resultMap="BaseResultMap">
+        select id,brand_logo, brand_name, country, description, join_time
+        from brand_manager
+        <trim prefix="where" prefixOverrides="OR">
+            <if test="brand.brandName != null">
+                OR brand_name = #{brand.brandName}
+            </if>
+            <if test="brand.joinTime != null">
+                OR join_time = #{brand.joinTime}
+            </if>
+        </trim>
+    </select>
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        from brand_manager
+        <trim prefix="where" prefixOverrides="AND">
+            <if test="brand.id != null">
+                AND id = #{brand.id}
+            </if>
+            <if test="brand.country != null">
+                OR country = #{brand.country}
+            </if>
+            <if test="brand.brandName != null">
+                OR brand_name = brand.brandName
+            </if>
+        </trim>
+    </select>
+    <insert id="insert">
+        insert into brand_manager(id, brand_logo, brand_name, country, description, join_time)
+        values (#{brand.id}, #{brand.brandLogo}, #{brand.brandName}, #{brand.country}, #{brand.description},
+                #{brand.joinTime})
+    </insert>
+    <select id="selectByBatch" resultMap="BaseResultMap">
+      select  brand_logo, brand_name, country, description
+          from brand_manager
+    </select>
+    <update id="update">
+        update brand_manager set status = 3 where id in
+        <foreach collection="brandId" open="(" close=")" separator="," item="idc">
+            #{idc}
+        </foreach>
+    </update>
+    <select id="selectByCountry" resultMap="BaseResultMap">
+        select id, brand_logo, brand_name, country, description
+            from brand_manager
+        where country = #{country}
+    </select>
+
 
 </mapper>
