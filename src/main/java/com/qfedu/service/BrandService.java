@@ -1,7 +1,6 @@
 package com.qfedu.service;
 
 import com.qfedu.domain.entity.Brand;
-import com.qfedu.mapper.BrandMapper;
 
 /**
  * @Author: Jesse Y

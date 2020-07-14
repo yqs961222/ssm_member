@@ -1,10 +1,8 @@
 package com.qfedu.service.impl;
 
 import com.qfedu.domain.entity.Brand;
-import com.qfedu.mapper.BrandMapper;
 import com.qfedu.service.BrandService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
