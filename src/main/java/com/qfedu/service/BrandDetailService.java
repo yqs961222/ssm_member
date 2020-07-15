@@ -21,4 +21,9 @@ public interface BrandDetailService {
      */
     List<BrandDetail> selectBySearch(String search) throws ServiceException;
 
+    /**
+     * 查询所有属性
+     */
+    List<String> selectForAttr() throws ServiceException;
+
 }

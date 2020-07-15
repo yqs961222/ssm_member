@@ -1,6 +1,7 @@
 package com.qfedu.service.impl;
 
 import com.qfedu.domain.entity.BrandDetail;
+import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandDetailMapper;
 import com.qfedu.service.BrandDetailService;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,12 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     public List<BrandDetail> selectBySearch(String search) {
         List<BrandDetail> list = brandDetailMapper.selectBySearch(search);
         return list;
+    }
+
+    @Override
+    public List<String> selectForAttr() throws ServiceException {
+        List<String> strings = brandDetailMapper.selectForAttr();
+        return strings;
     }
 
 

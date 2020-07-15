@@ -22,8 +22,8 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public int updateByBrand(int id, Brand brand) {
-        int ar = brandMapper.updateByBrand(id, brand);
-        return ar;
+//        int ar = brandMapper.updateByBrand(id, brand);
+        return 0;
     }
 
     /**
