@@ -53,15 +53,10 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     @Override
     public int updateBrandDetail(int proId, BrandDetailDto brandDetailDto) throws ServiceException {
         BrandDetail brandDetail = new BrandDetail();
-
+        //通过反射复制对象
+        //BeanUtils.copyProperties(要拷贝的对象, 目标对象);
         BeanUtils.copyProperties(brandDetailDto, brandDetail);
-
         brandDetail.setProId(proId);
-//        brandDetail.setOldPrice(brandDetailDto.getOldPrice());
-//        brandDetail.setNewPrice(brandDetailDto.getNewPrice());
-//        brandDetail.setReleaseTime(brandDetailDto.getReleaseTime());
-//        brandDetail.setExamine(brandDetailDto.getExamine());
-//        brandDetail.setStatus(brandDetailDto.getStatus());
         return brandDetailMapper.updateBrand(brandDetail);
     }
 
