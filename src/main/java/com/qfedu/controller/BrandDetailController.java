@@ -23,7 +23,7 @@ public class BrandDetailController {
      * @param size 分页
      * @return 状态码与结果集
      */
-    @GetMapping("/list/{id}")
+    @GetMapping("/list")
     public ResponseEntity<List<BrandDetail>> showAll(@PathVariable Integer id, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size){
         List<BrandDetail> list = brandDetailService.selectAllById(id, page, size);
         return ResponseEntity.success(list);

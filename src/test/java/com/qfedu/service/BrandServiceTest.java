@@ -1,6 +1,7 @@
 package com.qfedu.service;
 
 import com.qfedu.domain.entity.Brand;
+import com.qfedu.exception.ServiceException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,10 +19,10 @@ public class BrandServiceTest {
     BrandService brandService;
 
     @Test
-    public void updateByBrand() {
+    public void updateByBrand() throws ServiceException {
         Brand brand = new Brand();
         brand.setBrandLogo("123456.png");
-        int ar = brandService.updateByBrand(12001, brand);
+        int ar = brandService.updateByBrand(12001, brand) ;
         System.out.println(ar);
     }
 }

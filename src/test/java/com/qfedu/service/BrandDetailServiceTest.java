@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,10 +27,15 @@ public class BrandDetailServiceTest {
 
     @Test
     public void deleteBath() {
+        List<Integer> list = new ArrayList<>();
+        list.add(120111);
+        list.add(120112);
+        brandDetailService.deleteBath(list);
     }
 
     @Test
     public void deleteById() {
+        brandDetailService.deleteById(120111);
     }
 
     @Test
