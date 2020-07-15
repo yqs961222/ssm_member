@@ -1,8 +1,9 @@
 package com.qfedu.service.impl;
 
+import com.qfedu.domain.dto.ProDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
-import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandDetailMapper;
+import com.qfedu.mapper.ProDetailDtoMapper;
 import com.qfedu.service.BrandDetailService;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     @Resource
     BrandDetailMapper brandDetailMapper;
 
+    @Resource
+    ProDetailDtoMapper proDetailDtoMapper;
+
     @Override
     public List<BrandDetail> selectByAttr(String attr) {
         List<BrandDetail> details = brandDetailMapper.selectByAttr(attr);
@@ -32,9 +36,15 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     }
 
     @Override
-    public List<String> selectForAttr() throws ServiceException {
+    public List<String> selectForAttr() {
         List<String> strings = brandDetailMapper.selectForAttr();
         return strings;
+    }
+
+    @Override
+    public ProDetailDto selectByProId(Integer proId) {
+        ProDetailDto pdd = proDetailDtoMapper.selectByProId(proId);
+        return pdd;
     }
 
 

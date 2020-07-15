@@ -1,5 +1,6 @@
 package com.qfedu.controller;
 
+import com.qfedu.domain.dto.ProDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
 import com.qfedu.service.BrandDetailService;
@@ -72,5 +73,21 @@ public class BrandDetailController {
     public ResponseEntity<List<String>> selectForAttr() throws ServiceException {
         List<String> strings = brandDetailService.selectForAttr();
         return ResponseEntity.success(strings);
+    }
+
+    /**
+     * 通过商品的ID查询出对应的商品详情表
+     *
+     * @param proId 传入的商品ID
+     * @return 返回的是商品详情表对象的集合
+     */
+    @GetMapping("/product")
+    public ResponseEntity<ProDetailDto> selectByProId(Integer proId) throws ServiceException {
+        ProDetailDto proDetailDto = brandDetailService.selectByProId(proId);
+        if (proDetailDto != null) {
+            return ResponseEntity.success(proDetailDto);
+        } else {
+            return ResponseEntity.error();
+        }
     }
 }

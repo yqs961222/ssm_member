@@ -1,5 +1,6 @@
 package com.qfedu.service;
 
+import com.qfedu.domain.dto.ProDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
 
@@ -25,5 +26,11 @@ public interface BrandDetailService {
      * 查询所有属性
      */
     List<String> selectForAttr() throws ServiceException;
+
+    /**
+     * 通过点击商品名称, 查询商品详情表
+     * @return
+     */
+    ProDetailDto selectByProId(Integer proId) throws ServiceException;
 
 }

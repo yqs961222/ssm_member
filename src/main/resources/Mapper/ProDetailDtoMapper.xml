@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding ="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mapper.ProDetailDtoMapper">
+    <resultMap id="BaseResultMap" type="com.qfedu.domain.dto.ProDetailDto">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="pro_description" jdbcType="VARCHAR" property="proDescription" />
+        <result column="pro_id" jdbcType="INTEGER" property="proId" />
+    </resultMap>
+    
+    <resultMap id="ProIdResultMap" type="com.qfedu.domain.dto.ProDetailDto" extends="BaseResultMap">
+        <association property="brandDetail" resultMap="com.qfedu.mapper.BrandDetailMapper.BaseResultMap"/>
+    </resultMap>
+    
+    <select id="selectByProId" resultMap="ProIdResultMap">
+        select pro_id, bd.pro_name, pro_description, old_price, new_price, release_time, examine, status, attribute
+        from brand_detail bd left join pro_detail pd using(pro_id)
+        where pd.pro_id = #{proId}
+    </select>
+
+</mapper>
