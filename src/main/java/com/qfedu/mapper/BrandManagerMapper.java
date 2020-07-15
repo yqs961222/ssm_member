@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * @author FUTURE
+ */
 @Mapper
 public interface BrandManagerMapper {
     /**
@@ -29,7 +32,7 @@ public interface BrandManagerMapper {
      * @param brand
      * @return
      */
-    int insert(@Param("brand") Brand brand);
+    int insert(@Param("brand") Brand brand) throws DaoException;
 
     /**
      * 分页查询
@@ -37,20 +40,20 @@ public interface BrandManagerMapper {
      * @param offset
      * @return
      */
-    List<Brand> selectByBatch(@Param("limit") int limit,@Param("offset") int offset);
+    List<Brand> selectByBatch(@Param("limit") int limit,@Param("offset") int offset) throws DaoException;
 
     /**
      *批量删除
      * @param brandId
      * @return
      */
-    int update(@Param("brandId") List<Integer> brandId);
+    int update(@Param("brandId") List<Integer> brandId) throws DaoException;
 
     /**
      * 根据国家查询
      * @return
      */
-    List<Brand> selectByCountry(@Param("country") String  country);
+    List<Brand> selectByCountry(@Param("country") String  country) throws DaoException;
 
 
 
