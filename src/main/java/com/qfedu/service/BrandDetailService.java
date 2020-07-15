@@ -19,15 +19,5 @@ public interface BrandDetailService {
      */
     List<BrandDetail> selectByAttr(String attr) throws ServiceException;
 
-    /**
-     * 工具方法, 获取属性的个数
-     * @return 返回个数
-     */
-    int selectNum() throws ServiceException;
 
-    /**
-     * 工具方法, 获取属性名称的集合
-     * @return 返回集合
-     */
-    List<BrandDetail> selectGetAttr() throws ServiceException;
 }

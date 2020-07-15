@@ -18,14 +18,6 @@
     where attribute = #{attr}
   </select>
 
-  <select id="selectNum" resultType="int">
-    select count(distinct attribute)
-    from brand_detail;
-  </select>
 
-  <select id="selectGetAttr" resultMap="BaseResultMap">
-    select distinct attribute
-    from brand_detail;
-  </select>
 
 </mapper>
