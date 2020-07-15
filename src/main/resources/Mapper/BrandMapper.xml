@@ -36,4 +36,17 @@
     where id = #{id}
   </update>
 
+  <update id="deleteById">
+    update brand_manager
+    set status = 3
+    where id = #{id}
+  </update>
+  
+  <select id="selectOne" resultMap="BaseResultMap">
+    select id, brand_logo, brand_name, country, description, join_time, status
+    from brand_manager
+    where id = #{id}
+  </select>
+
+
 </mapper>
