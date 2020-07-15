@@ -13,14 +13,6 @@ public interface BrandDetailMapper {
      */
     List<BrandDetail> selectByAttr(@Param("attr") String attr) throws DaoException;
 
-    /**
-     * 工具方法, 获取属性的个数
-     */
-    int selectNum() throws DaoException;
 
-    /**
-     * 工具方法, 获取属性的名称集合
-     */
-    List<BrandDetail> selectGetAttr();
 
 }

@@ -27,16 +27,5 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     }
 
 
-    @Override
-    public int selectNum() {
-        int num = brandDetailMapper.selectNum();
-        return num;
-    }
 
-
-    @Override
-    public List<BrandDetail> selectGetAttr() {
-        List<BrandDetail> brandDetails = brandDetailMapper.selectGetAttr();
-        return brandDetails;
-    }
 }
