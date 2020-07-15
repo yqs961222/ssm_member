@@ -8,7 +8,9 @@ public enum ErrorStatus {
     SERVICE_ERROR(40001,"service error","数据异常请稍后再试"),
     DAO_ERROR(40001,"dao error","数据异常请稍后再试"),
     SYS_ERROR(40004,"system error","系统繁忙,请稍后再试"),
-    POST_SUCCESS(20001,"post success","提交数据成功");
+    POST_SUCCESS(20001,"post success","提交数据成功"),
+    GETT_SUCCESS(20001,"get success","提交数据成功"),
+    CONTROLLER_ERROR(40001,"controller error","数据异常请稍后再试");
     private Integer status;
     private String msg;
     private String tip;

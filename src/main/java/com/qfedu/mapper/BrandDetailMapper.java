@@ -1,6 +1,7 @@
 package com.qfedu.mapper;
 
 import com.qfedu.domain.entity.BrandDetail;
+import com.qfedu.exception.DaoException;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,7 +18,7 @@ public interface BrandDetailMapper {
      * @param brandDetail
      * @return
      */
-    int insert(@Param("brandDetail")BrandDetail brandDetail);
+    int insert(@Param("brandDetail")BrandDetail brandDetail) throws DaoException;
 
     /**
      * Jesse
@@ -84,5 +85,5 @@ public interface BrandDetailMapper {
      * @param list
      * @return
      */
-    int update(@Param("list")List<Integer> list);
+    int update(@Param("list")List<Integer> list) throws DaoException;
 }

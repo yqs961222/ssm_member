@@ -1,23 +1,20 @@
 package com.qfedu.exception;
 
-
 import com.qfedu.utils.ErrorStatus;
+import lombok.Data;
 
-/**
- * @Author: Jesse Y
- * @Data: 2020-07-09 16:36
- */
-public class ServiceException extends Exception {
+@Data
+public class ServiceException extends RuntimeException{
+    private Integer status;
     private String msg;
-    private int status;
 
-    public ServiceException(String message, int status) {
-        this.msg = message;
+    public ServiceException(Integer status, String msg) {
         this.status = status;
+        this.msg = msg;
     }
 
-    public ServiceException(ErrorStatus errorStatus) {
-        this.msg = errorStatus.getMsg();
-        this.status = errorStatus.getStatus();
+    public ServiceException(ErrorStatus statu) {
+        this.status = statu.getStatus();
+        this.msg = statu.getMsg();
     }
 }

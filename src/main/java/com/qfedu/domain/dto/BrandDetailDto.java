@@ -17,5 +17,7 @@ public class BrandDetailDto implements Serializable {
     private int examine;
     private int status;
     private String attribute;
+    private Integer proId;
+    private Integer brandId;
 
 }
