@@ -1,6 +1,5 @@
 package com.qfedu.controller;
 
-import com.qfedu.domain.dto.BrandDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
 import com.qfedu.service.BrandDetailService;
@@ -17,6 +16,7 @@ import java.util.List;
  * @Author: Jesse Y
  * @Data: 2020-07-14 14:40
  */
+
 @RestController
 @RequestMapping("/detail")
 public class BrandDetailController {
@@ -51,32 +51,26 @@ public class BrandDetailController {
      * @return 返回查找到的响应数据, 成功输出结果, 失败则输出错误报告
      */
     @GetMapping("/search")
-    public ResponseEntity<List<BrandDetailDto>> selectBySearch(String search) throws ServiceException {
+    public ResponseEntity<List<BrandDetail>> selectBySearch(String search) throws ServiceException {
         // 通过输入的search, 可以查询到对应的对象集合
         List<BrandDetail> details = brandDetailService.selectBySearch(search);
 
         // 判断集合内容是否为null
         if (details != null) {
-
-            // 创建一个BrandDetailDto对象集合bdd
-            List<BrandDetailDto> bdd = new ArrayList<>();
-
-            // 循环遍历查询到的非空集合details
-            for (BrandDetail detail : details) {
-
-                // 新建一个BrandDetailDto对象
-                BrandDetailDto brandDetailDto = new BrandDetailDto();
-
-                // 将每一条查询到的detail数据拷贝到新建的BrandDetailDto对象里
-                BeanUtils.copyProperties(detail, brandDetailDto);
-
-                // 添加到集合bdd里
-                bdd.add(brandDetailDto);
-            }
-            return ResponseEntity.success(bdd);
+            return ResponseEntity.success(details);
         } else {
             return ResponseEntity.error(ErrorStatus.NO_DATA);
         }
     }
 
+    /**
+     * 查询出所有的属性
+     *
+     * @return 返回包含属性的集合
+     */
+    @GetMapping("/attr")
+    public ResponseEntity<List<String>> selectForAttr() throws ServiceException {
+        List<String> strings = brandDetailService.selectForAttr();
+        return ResponseEntity.success(strings);
+    }
 }
