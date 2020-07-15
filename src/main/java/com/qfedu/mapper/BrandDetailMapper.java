@@ -13,6 +13,9 @@ public interface BrandDetailMapper {
      */
     List<BrandDetail> selectByAttr(@Param("attr") String attr) throws DaoException;
 
-
+    /**
+     * 通过search模糊值, 查找到对应的对象集合
+     */
+    List<BrandDetail> selectBySearch(@Param("search") String search) throws DaoException;
 
 }

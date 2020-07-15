@@ -27,16 +27,15 @@ public class BrandController {
      * @return 返回修改的影响行数
      */
     @PostMapping("/update")
-    public ResponseEntity<Integer> updateBrand(@RequestParam int id, @RequestBody Brand brand) {
-        try {
-            int ar = brandService.updateByBrand(id, brand);
-            if (ar > 0) {
-                return ResponseEntity.success(ar);
-            } else {
-                return ResponseEntity.error(ErrorStatus.UPDATE_ERROR);
-            }
-        } catch (Exception exception) {
-            return ResponseEntity.error(ErrorStatus.SYS_ERROR);
+    public ResponseEntity<Integer> updateBrand(@RequestParam int id, @RequestBody Brand brand) throws ServiceException {
+        // 传入ID, 和品牌对象, 修改品牌信息
+        int ar = brandService.updateByBrand(id, brand);
+
+        // 判断是否修改成功
+        if (ar > 0) {
+            return ResponseEntity.success(ar);
+        } else {
+            return ResponseEntity.error(ErrorStatus.UPDATE_ERROR);
         }
     }
 
@@ -47,16 +46,15 @@ public class BrandController {
      * @return 返回行数
      */
     @GetMapping("/delete")
-    public ResponseEntity<Integer> deleteOne(int id) {
-        try {
-            int ar = brandService.deleteById(id);
-            if (ar > 0) {
-                return ResponseEntity.success(ar);
-            } else {
-                return ResponseEntity.error(ErrorStatus.UPDATE_ERROR);
-            }
-        } catch (ServiceException e) {
-            return ResponseEntity.error(ErrorStatus.SYS_ERROR);
+    public ResponseEntity<Integer> deleteOne(int id) throws ServiceException {
+        // 传入ID, 假删除品牌
+        int ar = brandService.deleteById(id);
+
+        // 判断是否删除成功
+        if (ar > 0) {
+            return ResponseEntity.success(ar);
+        } else {
+            return ResponseEntity.error(ErrorStatus.UPDATE_ERROR);
         }
     }
 }
