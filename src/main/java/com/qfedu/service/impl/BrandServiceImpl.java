@@ -1,8 +1,7 @@
 package com.qfedu.service.impl;
 
 import com.qfedu.domain.entity.Brand;
-import com.qfedu.exception.ServiceException;
-import com.qfedu.mapper.BrandMapper;
+import com.qfedu.mapper.BrandManageMapper;
 import com.qfedu.service.BrandService;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ import javax.annotation.Resource;
 public class BrandServiceImpl implements BrandService {
 
     @Resource
-    BrandMapper brandMapper;
+    BrandManageMapper brandManageMapper;
 
     /**
      * 修改传入的品牌信息
@@ -32,7 +31,7 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public int deleteById(int id) {
-        int ar = brandMapper.deleteById(id);
+        int ar = brandManageMapper.deleteById(id);
         return ar;
     }
 

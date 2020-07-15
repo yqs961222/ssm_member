@@ -4,7 +4,7 @@ import com.qfedu.domain.dto.BrandDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandDetailMapper;
-import com.qfedu.mapper.BrandMapper;
+import com.qfedu.mapper.BrandManageMapper;
 import com.qfedu.service.BrandDetailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     @Resource
     BrandDetailMapper brandDetailMapper;
     @Resource
-    BrandMapper brandMapper;
+    BrandManageMapper brandManageMapper;
 
     @Override
     public int add(BrandDetailDto brandDetailDto)  throws ServiceException {
