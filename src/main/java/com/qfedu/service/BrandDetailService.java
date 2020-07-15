@@ -2,6 +2,7 @@ package com.qfedu.service;
 
 import com.qfedu.domain.dto.BrandDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
+import com.qfedu.exception.ServiceException;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,21 +23,21 @@ public interface BrandDetailService {
      * @param attribute 商品属性
      * @return 返回影响的行数
      */
-    int add(BrandDetailDto brandDetailDto);
+    int add(BrandDetailDto brandDetailDto) throws ServiceException;
 
     /**
      * 批量删除
      * @param ids 要删除的id集合
      * @return 影响的行数
      */
-    int deleteBath(List<Integer> ids);
+    int deleteBath(List<Integer> ids) throws ServiceException;
 
     /**
      * 删除商品
      * @param proId 商品id
      * @return 影响的行数
      */
-    int deleteById(int proId);
+    int deleteById(int proId) throws ServiceException;
 
     /**
      * 更新商品信息
@@ -48,26 +49,26 @@ public interface BrandDetailService {
      * @param status 状态
      * @return 影响的行数
      */
-    int updateBrandDetail(int proId, BrandDetailDto brandDetailDto);
+    int updateBrandDetail(int proId, BrandDetailDto brandDetailDto) throws ServiceException;
 
     /**
      * 封禁商品
      * @param proId 商品id
      * @return
      */
-    int updateBannedById(int proId);
+    int updateBannedById(int proId) throws ServiceException;
 
     /**
      * 显示品牌下所有商品信息
      * @param id 品牌id
      * @return 查询的结果集
      */
-    List<BrandDetail> selectAllById(int id, int page, int size);
+    List<BrandDetail> selectAllById(int id, int page, int size) throws ServiceException;
 
     /**
      * 根据商品id查询信息
      * @param proId 商品id
      * @return 查询到的对象
      */
-    BrandDetail selectById(int proId);
+    BrandDetail selectById(int proId) throws ServiceException;
 }

@@ -2,6 +2,7 @@ package com.qfedu.controller;
 
 import com.qfedu.domain.dto.BrandDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
+import com.qfedu.exception.ServiceException;
 import com.qfedu.service.BrandDetailService;
 import com.qfedu.utils.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,8 @@ public class BrandDetailController {
      * @param size 分页
      * @return 状态码与结果集
      */
-    @GetMapping("/list")
-    public ResponseEntity<List<BrandDetail>> showAll(@PathVariable Integer id, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size){
+    @GetMapping("/list/{id}")
+    public ResponseEntity<List<BrandDetail>> showAll(@PathVariable() Integer id, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size) throws ServiceException {
         List<BrandDetail> list = brandDetailService.selectAllById(id, page, size);
         return ResponseEntity.success(list);
     }
@@ -35,7 +36,7 @@ public class BrandDetailController {
      * @return
      */
     @PostMapping("/add")
-    public ResponseEntity<Integer> addBrandDetail(@RequestBody BrandDetailDto brandDetailDto){
+    public ResponseEntity<Integer> addBrandDetail(@RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
         int count = brandDetailService.add(brandDetailDto);
         return ResponseEntity.success(count);
     }
@@ -46,7 +47,7 @@ public class BrandDetailController {
      * @return
      */
     @PostMapping("/delete")
-    public ResponseEntity<Integer> deleteBath(@RequestParam List<Integer> ids){
+    public ResponseEntity<Integer> deleteBath(@RequestParam List<Integer> ids) throws ServiceException {
         int count = brandDetailService.deleteBath(ids);
         return ResponseEntity.success(count);
     }
@@ -57,7 +58,7 @@ public class BrandDetailController {
      * @return
      */
     @PostMapping("/del")
-    public ResponseEntity<Integer> deleteById(@RequestParam Integer id){
+    public ResponseEntity<Integer> deleteById(@RequestParam Integer id) throws ServiceException {
         int count = brandDetailService.deleteById(id);
         return ResponseEntity.success(count);
     }
@@ -69,7 +70,7 @@ public class BrandDetailController {
      * @return
      */
     @PostMapping("/update")
-    public ResponseEntity<Integer> updateBrandDetail(@RequestParam int id, @RequestBody BrandDetailDto brandDetailDto){
+    public ResponseEntity<Integer> updateBrandDetail(@RequestParam int id, @RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
         int count = brandDetailService.updateBrandDetail(id, brandDetailDto);
         return ResponseEntity.success(count);
     }
@@ -80,7 +81,7 @@ public class BrandDetailController {
      * @return
      */
     @PostMapping("/banned")
-    public ResponseEntity<Integer> updateBannedById(@RequestParam int id){
+    public ResponseEntity<Integer> updateBannedById(@RequestParam int id) throws ServiceException {
         int count = brandDetailService.updateBannedById(id);
         return ResponseEntity.success(count);
     }

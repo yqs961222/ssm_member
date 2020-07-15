@@ -13,13 +13,13 @@
     <result column="attribute" jdbcType="VARCHAR" property="attribute" />
   </resultMap>
   <resultMap id="collect" type="BrandDetail" extends="BaseResultMap">
-    <collection property="brand" ofType="com.qfedu.domain.entity.Brand" resultMap="com.qfedu.mapper.BrandDetailMapper.BaseResultMap"/>
+    <collection property="brandList" ofType="com.qfedu.domain.entity.Brand" resultMap="com.qfedu.mapper.BrandDetailMapper.BaseResultMap"/>
   </resultMap>
     <select id="selectAllById" resultMap="collect">
       select bd.pro_id,bd.pro_name,bd.old_price,bd.new_price,bd.release_time,bd.examine,bd.status,b.country
       from brand_detail bd
       left join brand_manager b on bd.brand_id=b.id
-      where brand_id=#{id} and examine=1
+      where bd.brand_id=#{id} and bd.examine=1
       limit #{page},#{size}
     </select>
 
@@ -55,10 +55,10 @@
       <if test="brandDetail.releaseTime != null and brandDetail.releaseTime != ''">
         release_time=#{brandDetail.releaseTime},
       </if>
-      <if test="brandDetail.examine != null and  brandDetail.examine != ''">
+      <if test="brandDetail.examine != null and  brandDetail.examine != '' or brandDetail.examine == 0">
         examine=#{brandDetail.examine},
       </if>
-      <if test="brandDetail.status != null and brandDetail.status != ''">
+      <if test="brandDetail.status != null and brandDetail.status != '' or brandDetail.status == 0">
         status=#{brandDetail.status},
       </if>
     </trim>

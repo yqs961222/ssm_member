@@ -2,6 +2,8 @@ package com.qfedu.domain.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -54,6 +56,6 @@ public class BrandDetail {
     /**
      * 主表
      */
-    private Brand brand;
+    private List<Brand> brandList;
 }
 

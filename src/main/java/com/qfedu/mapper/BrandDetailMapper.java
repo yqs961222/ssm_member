@@ -17,7 +17,7 @@ public interface BrandDetailMapper {
      * @param size 分页显示数量
      * @return 返回查询所有品牌的结果集
      */
-    List<BrandDetail> selectAllById(@Param("id") int id, @Param("page") int page, @Param("size") int size) throws DaoException;
+    List<BrandDetail> selectAllById(@Param("id") int id, @Param("page") int page, @Param("size") int size);
 
     /**
      * 添加品牌
