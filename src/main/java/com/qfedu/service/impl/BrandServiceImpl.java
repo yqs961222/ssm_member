@@ -1,7 +1,6 @@
 package com.qfedu.service.impl;
 
 import com.qfedu.domain.entity.Brand;
-import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandMapper;
 import com.qfedu.service.BrandService;
 import org.springframework.stereotype.Service;

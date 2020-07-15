@@ -15,10 +15,10 @@ public interface BrandMapper {
     /**
      * 删除品牌信息, 这里用到的是假删除
      */
-    int deleteById(@Param("id") int id);
+    int deleteById(@Param("id") int id) throws DaoException;
 
     /**
      * 查询一条品牌信息, 通过品牌的id
      */
-    Brand selectOne(@Param("id") int id);
+    Brand selectOne(@Param("id") int id) throws DaoException;
 }

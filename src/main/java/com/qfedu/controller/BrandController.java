@@ -5,10 +5,7 @@ import com.qfedu.exception.ServiceException;
 import com.qfedu.service.BrandService;
 import com.qfedu.utils.ErrorStatus;
 import com.qfedu.utils.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -30,7 +27,7 @@ public class BrandController {
      * @return 返回修改的影响行数
      */
     @PostMapping("/update")
-    public ResponseEntity<Integer> updateBrand(int id, Brand brand) {
+    public ResponseEntity<Integer> updateBrand(@RequestParam int id, @RequestBody Brand brand) {
         try {
             int ar = brandService.updateByBrand(id, brand);
             if (ar > 0) {
@@ -49,7 +46,7 @@ public class BrandController {
      * @param id 传入要删除品牌的id
      * @return 返回行数
      */
-    @DeleteMapping("/delete")
+    @GetMapping("/delete")
     public ResponseEntity<Integer> deleteOne(int id) {
         try {
             int ar = brandService.deleteById(id);
