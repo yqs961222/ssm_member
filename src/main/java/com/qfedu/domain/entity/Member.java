@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
+/**
+ * @author FUTURE
+ */
 @Data
 public class Member implements Serializable {
     /**

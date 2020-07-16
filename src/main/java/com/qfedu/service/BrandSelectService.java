@@ -6,6 +6,9 @@ import com.qfedu.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * @author FUTURE
+ */
 public interface BrandSelectService {
     /**
      * 根据商品名和上架时间查询

@@ -57,10 +57,15 @@ public class BrandManagerController {
      * @param brandDto
      * @return
      */
-    @PostMapping("/add")
+    @PostMapping("/add3")
     public ResponseUtils<Integer> addBrand(BrandDto brandDto) {
         int count = brandSelectService.insertBrand(brandDto);
-        return ResponseUtils.success(ErrorStatus.POST_SUCCESS, count);
+        if (count != 0) {
+            return ResponseUtils.success(ErrorStatus.POST_SUCCESS, count);
+        } else {
+            return ResponseUtils.error(ErrorStatus.CONTROLLER_ERROR);
+        }
+
     }
 
     /**
@@ -73,7 +78,12 @@ public class BrandManagerController {
     @GetMapping("/selectAll")
     public ResponseUtils<List<Brand>> findByBatch(@RequestParam(defaultValue = "0") int limit, @RequestParam(defaultValue = "10") int offset) {
         List<Brand> brands = brandSelectService.selectAll(limit, offset);
-        return ResponseUtils.success(ErrorStatus.SUUESS, brands);
+        if (brands != null) {
+            return ResponseUtils.success(ErrorStatus.SUUESS, brands);
+        } else {
+            return ResponseUtils.success(ErrorStatus.CONTROLLER_ERROR);
+        }
+
     }
 
     /**
@@ -85,7 +95,12 @@ public class BrandManagerController {
     @PostMapping("/update")
     public ResponseUtils<Integer> modify(List<Integer> id) {
         int count = brandSelectService.update(id);
-        return ResponseUtils.success(ErrorStatus.POST_SUCCESS, count);
+        if (count != 0) {
+            return ResponseUtils.success(ErrorStatus.POST_SUCCESS, count);
+        } else {
+            return ResponseUtils.success(ErrorStatus.CONTROLLER_ERROR);
+        }
+
     }
 
     /**
@@ -97,6 +112,11 @@ public class BrandManagerController {
     @GetMapping("/selectByCountry")
     public ResponseUtils<List<Brand>> findByCountry(String country) {
         List<Brand> brands = brandSelectService.selectByCountry(country);
-        return ResponseUtils.success(ErrorStatus.SUUESS, brands);
+        if (brands != null) {
+            return ResponseUtils.success(ErrorStatus.SUUESS, brands);
+        } else {
+            return ResponseUtils.success(ErrorStatus.CONTROLLER_ERROR);
+        }
+
     }
 }

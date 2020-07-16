@@ -4,20 +4,22 @@ import com.qfedu.domain.dto.BrandDto;
 import com.qfedu.domain.entity.Brand;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.mapper.BrandDetailMapper;
-import com.qfedu.mapper.BrandManagerMapper;
+import com.qfedu.mapper.BrandMapper;
 import com.qfedu.service.BrandSelectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author FUTURE
+ */
 @Service
 public class BrandSelectServiceImpl implements BrandSelectService {
     @Autowired
-    BrandManagerMapper brandManagerMapper;
+    BrandMapper brandMapper;
     @Autowired
     BrandDetailMapper brandDetailMapper;
 
@@ -31,7 +33,7 @@ public class BrandSelectServiceImpl implements BrandSelectService {
     public List<Brand> selectBrand(BrandDto brandDto) {
         Brand brand = new Brand();
         BeanUtils.copyProperties(brandDto, brand);
-        List<Brand> brands = brandManagerMapper.selectByNameAndTime(brand);
+        List<Brand> brands = brandMapper.selectByNameAndTime(brand);
         return brands;
     }
 
@@ -45,7 +47,7 @@ public class BrandSelectServiceImpl implements BrandSelectService {
     public Brand selectBrandById(BrandDto brandDto) {
         Brand brand = new Brand();
         BeanUtils.copyProperties(brandDto, brand);
-        brandManagerMapper.selectById(brand);
+        brandMapper.selectById(brand);
         return brand;
     }
 
@@ -62,7 +64,7 @@ public class BrandSelectServiceImpl implements BrandSelectService {
         BrandDetail brandDetail = new BrandDetail();
         BeanUtils.copyProperties(brandDto, brand);
         BeanUtils.copyProperties(brandDto.getBrandDetailDto(), brandDetail);
-        int a = brandManagerMapper.insert(brand);
+        int a = brandMapper.insert(brand);
         int b = brandDetailMapper.insert(brandDetail);
         if (a != 0 && b != 0) {
             return a + b;
@@ -81,7 +83,7 @@ public class BrandSelectServiceImpl implements BrandSelectService {
      */
     @Override
     public List<Brand> selectAll(int limit, int offset) {
-        List<Brand> brands = brandManagerMapper.selectByBatch(limit, offset);
+        List<Brand> brands = brandMapper.selectByBatch(limit, offset);
         return brands;
     }
 
@@ -93,7 +95,7 @@ public class BrandSelectServiceImpl implements BrandSelectService {
      */
     @Override
     public int update(List<Integer> id) {
-        int count = brandManagerMapper.update(id);
+        int count = brandMapper.update(id);
         brandDetailMapper.update(id);
         return count;
     }
@@ -107,6 +109,6 @@ public class BrandSelectServiceImpl implements BrandSelectService {
     @Override
     public List<Brand> selectByCountry(String country) {
 
-        return brandManagerMapper.selectByCountry(country);
+        return brandMapper.selectByCountry(country);
     }
 }

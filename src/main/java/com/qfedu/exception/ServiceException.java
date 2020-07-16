@@ -3,6 +3,9 @@ package com.qfedu.exception;
 import com.qfedu.utils.ErrorStatus;
 import lombok.Data;
 
+/**
+ * @author FUTURE
+ */
 @Data
 public class ServiceException extends RuntimeException{
     private Integer status;

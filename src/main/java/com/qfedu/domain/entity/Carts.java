@@ -5,8 +5,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
+/**
+ * @author FUTURE
+ */
 @Data
-public class ProductCarts implements Serializable {
+public class Carts implements Serializable {
     /**
     * 购物车id
     */
@@ -61,4 +64,11 @@ public class ProductCarts implements Serializable {
     * 会员id
     */
     private Integer memberId;
+
+    /**
+     * 商品id
+     */
+    private Integer productId;
+
+
 }

@@ -3,6 +3,9 @@ package com.qfedu.domain.dto;
 import lombok.Data;
 
 
+/**
+ * @author FUTURE
+ */
 @Data
 public class BrandDto {
     /**

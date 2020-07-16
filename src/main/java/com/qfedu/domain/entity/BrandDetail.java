@@ -6,6 +6,9 @@ import java.util.List;
 
 import lombok.Data;
 
+/**
+ * @author FUTURE
+ */
 @Data
 public class BrandDetail {
     /**

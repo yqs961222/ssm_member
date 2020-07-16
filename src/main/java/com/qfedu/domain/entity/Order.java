@@ -1,11 +1,15 @@
 package com.qfedu.domain.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
+/**
+ * @author FUTURE
+ */
 @Data
-public class ProductOrder implements Serializable {
+public class Order implements Serializable {
     /**
     * 订单编号
     */
@@ -19,7 +23,7 @@ public class ProductOrder implements Serializable {
     /**
     * 总价
     */
-    private Integer total;
+    private BigDecimal total;
 
     /**
     * 创建时间

@@ -5,6 +5,9 @@ import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * @author FUTURE
+ */
 @Data
 public class OrderItem implements Serializable {
     /**

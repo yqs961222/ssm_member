@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * 品牌管理表
+ * @author FUTURE
  */
 @Data
 public class Brand {

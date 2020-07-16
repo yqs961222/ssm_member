@@ -3,6 +3,9 @@ package com.qfedu.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author FUTURE
+ */
 public class GenerateCodeUtil {
 
     /**
