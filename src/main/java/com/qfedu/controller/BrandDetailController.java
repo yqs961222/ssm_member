@@ -86,4 +86,7 @@ public class BrandDetailController {
         return ResponseEntity.success(count);
     }
 
+    /**
+     * 注释，为了重新上传一次
+     */
 }
