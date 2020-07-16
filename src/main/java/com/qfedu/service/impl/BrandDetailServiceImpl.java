@@ -2,6 +2,7 @@ package com.qfedu.service.impl;
 
 import com.qfedu.domain.dto.ProDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
+import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandDetailMapper;
 import com.qfedu.mapper.ProDetailDtoMapper;
 import com.qfedu.service.BrandDetailService;
@@ -36,7 +37,7 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     }
 
     @Override
-    public List<String> selectForAttr() {
+    public List<String> selectForAttr() throws ServiceException {
         List<String> strings = brandDetailMapper.selectForAttr();
         return strings;
     }
