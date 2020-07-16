@@ -2,7 +2,6 @@ package com.qfedu.service.impl;
 
 import com.qfedu.domain.entity.Brand;
 import com.qfedu.mapper.BrandMapper;
-import com.qfedu.mapper.BrandManageMapper;
 import com.qfedu.service.BrandService;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +18,15 @@ public class BrandServiceImpl implements BrandService {
     BrandMapper brandMapper;
 
     @Resource
-    BrandManageMapper brandManageMapper;
+    BrandMapper brandManageMapper;
 
     /**
      * 修改传入的品牌信息
      */
     @Override
     public int updateByBrand(int id, Brand brand) {
-//        int ar = brandMapper.updateByBrand(id, brand);
-        return 0;
+        int ar = brandMapper.updateByBrand(id, brand);
+        return ar;
     }
 
     /**

@@ -6,7 +6,7 @@ import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandDetailMapper;
 import com.qfedu.mapper.ProDetailDtoMapper;
-import com.qfedu.mapper.BrandManageMapper;
+import com.qfedu.mapper.BrandMapper;
 import com.qfedu.service.BrandDetailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -29,19 +29,19 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     ProDetailDtoMapper proDetailDtoMapper;
 
     @Resource
-    BrandManageMapper brandManageMapper;
+    BrandMapper brandManageMapper;
 
     // XTL
     @Override
-    public int add(BrandDetailDto brandDetailDto)  throws ServiceException {
-//        Brand brand = brandMapper.selectById(brandDetailDto.getBrandName());
-//        int brandId = brand.getId();
-//        int proId = ( brandId - brandId % 10 ) * 10 + (int)(Math.random() * 999);
-//        if (brandDetailMapper.selectById(proId) != null){
-//            return add(brandDetailDto);
-//        }
+    public int add(BrandDetailDto brandDetailDto)  {
+/*        Brand brand = brandMapper.selectById(brandDetailDto.getBrandName());
+        int brandId = brand.getId();
+        int proId = ( brandId - brandId % 10 ) * 10 + (int)(Math.random() * 999);
+        if (brandDetailMapper.selectById(proId) != null){
+            return add(brandDetailDto);
+        }*/
         BrandDetail brandDetailAdd = new BrandDetail();
-//        brandDetailAdd.setProId(proId);
+//         brandDetailAdd.setProId(proId);
         BeanUtils.copyProperties(brandDetailDto, brandDetailAdd);
 //        brandDetailAdd.setProName(brandDetailDto.getProName());
 //        brandDetailAdd.setOldPrice(brandDetailDto.getOldPrice());
@@ -55,22 +55,22 @@ public class BrandDetailServiceImpl implements BrandDetailService {
 
     // XTL
     @Override
-    public int deleteBath(List<Integer> ids) throws ServiceException {
+    public int deleteBath(List<Integer> ids) {
         return brandDetailMapper.deleteBath(ids);
     }
 
     // XTL
     @Override
-    public int deleteById(int proId) throws ServiceException {
+    public int deleteById(int proId) {
         return brandDetailMapper.deleteById(proId);
     }
 
     // XTL
     @Override
-    public int updateBrandDetail(int proId, BrandDetailDto brandDetailDto) throws ServiceException {
+    public int updateBrandDetail(int proId, BrandDetailDto brandDetailDto) {
         BrandDetail brandDetail = new BrandDetail();
-        //通过反射复制对象
-        //BeanUtils.copyProperties(要拷贝的对象, 目标对象);
+        /*通过反射复制对象
+        BeanUtils.copyProperties(要拷贝的对象, 目标对象);*/
         BeanUtils.copyProperties(brandDetailDto, brandDetail);
         brandDetail.setProId(proId);
         return brandDetailMapper.updateBrand(brandDetail);
@@ -78,7 +78,7 @@ public class BrandDetailServiceImpl implements BrandDetailService {
 
     // XTL
     @Override
-    public int updateBannedById(int proId) throws ServiceException {
+    public int updateBannedById(int proId) {
         BrandDetail brandDetail = brandDetailMapper.selectById(proId);
         int status = brandDetail.getStatus();
         if (status == 0){
@@ -91,14 +91,14 @@ public class BrandDetailServiceImpl implements BrandDetailService {
 
     // XTL
     @Override
-    public List<BrandDetail> selectAllById(int id, int page, int size) throws ServiceException {
+    public List<BrandDetail> selectAllById(int id, int page, int size) {
         page = (page -1) * size;
         return brandDetailMapper.selectAllById(id, page, size);
     }
 
     // XTL
     @Override
-    public BrandDetail selectById(int proId) throws ServiceException {
+    public BrandDetail selectById(int proId) {
         return brandDetailMapper.selectById(proId);
     }
 

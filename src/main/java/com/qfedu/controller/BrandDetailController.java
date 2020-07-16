@@ -114,8 +114,8 @@ public class BrandDetailController {
     /**
      * XTL
      * 添加商品
-     * @param brandDetailDto
-     * @return
+     * @param brandDetailDto 传入商品详情
+     * @return 返回影响的行数, 成功返回1, 失败返回error
      */
     @PostMapping("/add")
     public ResponseEntity<Integer> addBrandDetail(@RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
@@ -127,7 +127,7 @@ public class BrandDetailController {
      * XTL
      * 批量删除
      * @param ids 结果集
-     * @return
+     * @return 返回删除的行数, 成功返回大于0, 失败返回error
      */
     @PostMapping("/delete")
     public ResponseEntity<Integer> deleteBath(@RequestParam List<Integer> ids) throws ServiceException {
@@ -138,8 +138,8 @@ public class BrandDetailController {
     /**
      * XTL
      * 删除
-     * @param id
-     * @return
+     * @param id 传入要删除的商品ID
+     * @return 返回删除的行数, 成功返回1, 失败返回error
      */
     @PostMapping("/del")
     public ResponseEntity<Integer> deleteById(@RequestParam Integer id) throws ServiceException {
@@ -150,9 +150,9 @@ public class BrandDetailController {
     /**
      * XTL
      * 更新商品
-     * @param id
-     * @param brandDetailDto
-     * @return
+     * @param id 传入更新的商品ID
+     * @param brandDetailDto 传入更新的商品详情对象
+     * @return 更新成功返回1, 失败返回error
      */
     @PostMapping("/update")
     public ResponseEntity<Integer> updateBrandDetail(@RequestParam int id, @RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
@@ -163,13 +163,12 @@ public class BrandDetailController {
     /**
      * XTL
      * 封禁
-     * @param id
-     * @return
+     * @param id 传入需要禁用或启用的商品ID
+     * @return 成功禁用或启用返回1, 失败返回error
      */
     @PostMapping("/banned")
     public ResponseEntity<Integer> updateBannedById(@RequestParam int id) throws ServiceException {
         int count = brandDetailService.updateBannedById(id);
         return ResponseEntity.success(count);
     }
-
 }

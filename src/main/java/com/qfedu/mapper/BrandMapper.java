@@ -5,7 +5,7 @@ import com.qfedu.exception.DaoException;
 import org.apache.ibatis.annotations.Param;
 
 
-public interface BrandManageMapper {
+public interface BrandMapper {
 
     /**
      * 修改商品信息

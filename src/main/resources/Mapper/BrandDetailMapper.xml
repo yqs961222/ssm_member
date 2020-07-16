@@ -27,7 +27,7 @@
   </select>
 
   <resultMap id="collect" type="BrandDetail" extends="BaseResultMap">
-    <collection property="brandList" ofType="com.qfedu.domain.entity.Brand" resultMap="com.qfedu.mapper.BrandManageMapper.BaseResultMap"/>
+    <collection property="brandList" ofType="com.qfedu.domain.entity.Brand" resultMap="com.qfedu.mapper.BrandMapper.BaseResultMap"/>
   </resultMap>
     <select id="selectAllById" resultMap="collect">
       select bd.pro_id,bd.pro_name,bd.old_price,bd.new_price,bd.release_time,bd.examine,bd.status,b.country,b.description,b.id,b.brand_logo,b.brand_name
