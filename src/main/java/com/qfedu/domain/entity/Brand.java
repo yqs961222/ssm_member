@@ -45,8 +45,5 @@ public class Brand {
      */
     private Integer status;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 第一次测试
 }

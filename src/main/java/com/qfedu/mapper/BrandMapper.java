@@ -15,12 +15,14 @@ import java.util.List;
 public interface BrandMapper {
     /**
      * 根据商品名和上架时间查询
+     *
      * @return 返回查询的商品对象
      */
     List<Brand> selectByNameAndTime(@Param("brand") Brand brand) throws DaoException;
 
     /**
      * 通过商品id,国家,品牌查询---精确查询
+     *
      * @param brand
      * @return
      * @throws DaoException
@@ -29,6 +31,7 @@ public interface BrandMapper {
 
     /**
      * 添加商品
+     *
      * @param brand
      * @return
      */
@@ -36,14 +39,16 @@ public interface BrandMapper {
 
     /**
      * 分页查询
+     *
      * @param limit
      * @param offset
      * @return
      */
-    List<Brand> selectByBatch(@Param("limit") int limit,@Param("offset") int offset) throws DaoException;
+    List<Brand> selectByBatch(@Param("limit") int limit, @Param("offset") int offset) throws DaoException;
 
     /**
-     *批量删除
+     * 批量删除
+     *
      * @param brandId
      * @return
      */
@@ -51,18 +56,11 @@ public interface BrandMapper {
 
     /**
      * 根据国家查询
+     *
      * @return
      */
-    List<Brand> selectByCountry(@Param("country") String  country) throws DaoException;
+    List<Brand> selectByCountry(@Param("country") String country) throws DaoException;
 
-
-
-import com.qfedu.domain.entity.Brand;
-import com.qfedu.exception.DaoException;
-import org.apache.ibatis.annotations.Param;
-
-
-public interface BrandMapper {
 
     /**
      * 修改商品信息

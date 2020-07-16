@@ -79,7 +79,7 @@ public class BrandManagerController {
     public ResponseUtils<List<Brand>> findByBatch(@RequestParam(defaultValue = "0") int limit, @RequestParam(defaultValue = "10") int offset) {
         List<Brand> brands = brandSelectService.selectAll(limit, offset);
         if (brands != null) {
-            return ResponseUtils.success(ErrorStatus.SUUESS, brands);
+            return ResponseUtils.success(ErrorStatus.SUCCESS, brands);
         } else {
             return ResponseUtils.success(ErrorStatus.CONTROLLER_ERROR);
         }
@@ -113,7 +113,7 @@ public class BrandManagerController {
     public ResponseUtils<List<Brand>> findByCountry(String country) {
         List<Brand> brands = brandSelectService.selectByCountry(country);
         if (brands != null) {
-            return ResponseUtils.success(ErrorStatus.SUUESS, brands);
+            return ResponseUtils.success(ErrorStatus.SUCCESS, brands);
         } else {
             return ResponseUtils.success(ErrorStatus.CONTROLLER_ERROR);
         }

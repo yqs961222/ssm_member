@@ -2,6 +2,7 @@ package com.qfedu.service.impl;
 
 import com.qfedu.domain.dto.BrandDetailDto;
 import com.qfedu.domain.dto.ProDetailDto;
+import com.qfedu.domain.entity.Brand;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
 import com.qfedu.mapper.BrandDetailMapper;
@@ -29,27 +30,23 @@ public class BrandDetailServiceImpl implements BrandDetailService {
     ProDetailDtoMapper proDetailDtoMapper;
 
     @Resource
-    BrandMapper brandManageMapper;
+    BrandMapper brandMapper;
 
     // XTL
     @Override
     public int add(BrandDetailDto brandDetailDto)  {
-/*        Brand brand = brandMapper.selectById(brandDetailDto.getBrandName());
+        Brand brand = new Brand();
+        brand.setBrandName(brandDetailDto.getBrandName());
+        brand = brandMapper.selectById(brand);
         int brandId = brand.getId();
         int proId = ( brandId - brandId % 10 ) * 10 + (int)(Math.random() * 999);
         if (brandDetailMapper.selectById(proId) != null){
             return add(brandDetailDto);
-        }*/
+        }
         BrandDetail brandDetailAdd = new BrandDetail();
-//         brandDetailAdd.setProId(proId);
+         brandDetailAdd.setProId(proId);
         BeanUtils.copyProperties(brandDetailDto, brandDetailAdd);
-//        brandDetailAdd.setProName(brandDetailDto.getProName());
-//        brandDetailAdd.setOldPrice(brandDetailDto.getOldPrice());
-//        brandDetailAdd.setNewPrice(brandDetailDto.getNewPrice());
-//        brandDetailAdd.setReleaseTime(brandDetailDto.getReleaseTime());
-//        brandDetailAdd.setExamine(brandDetailDto.getExamine());
-//        brandDetailAdd.setStatus(brandDetailDto.getStatus());
-//        brandDetailAdd.setAttribute(brandDetailDto.getAttribute());
+
         return brandDetailMapper.insertProduct(brandDetailAdd);
     }
 

@@ -17,9 +17,6 @@ public class BrandServiceImpl implements BrandService {
     @Resource
     BrandMapper brandMapper;
 
-    @Resource
-    BrandMapper brandManageMapper;
-
     /**
      * 修改传入的品牌信息
      */

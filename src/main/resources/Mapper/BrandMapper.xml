@@ -23,7 +23,7 @@
         </trim>
     </select>
     <select id="selectById" resultMap="BaseResultMap">
-        select
+        select id,brand_logo, brand_name, country, description
         from brand_manager
         <trim prefix="where" prefixOverrides="AND">
             <if test="brand.id != null">
@@ -33,7 +33,7 @@
                 OR country = #{brand.country}
             </if>
             <if test="brand.brandName != null">
-                OR brand_name = brand.brandName
+                OR brand_name = #{brand.brandName}
             </if>
         </trim>
     </select>
@@ -57,15 +57,6 @@
             from brand_manager
         where country = #{country}
     </select>
-  <resultMap id="BaseResultMap" type="com.qfedu.domain.entity.Brand">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="brand_logo" jdbcType="VARCHAR" property="brandLogo" />
-    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
-    <result column="country" jdbcType="VARCHAR" property="country" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="join_time" jdbcType="DATE" property="joinTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-  </resultMap>
 
   <update id="updateByBrand">
     update brand_manager
