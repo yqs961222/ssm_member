@@ -12,20 +12,6 @@
     <result column="brand_id" jdbcType="INTEGER" property="brandId" />
     <result column="attribute" jdbcType="VARCHAR" property="attribute" />
   </resultMap>
-  <select id="selectByAttr" resultMap="BaseResultMap">
-    select pro_id, pro_name, old_price, new_price, release_time, examine, status
-    from brand_detail
-    where attribute = #{attr}
-  </select>
-
-  <select id="selectBySearch" resultMap="BaseResultMap">
-    select pro_id, pro_name, old_price, new_price, release_time, examine, status
-    from brand_detail
-    <trim prefix="where" prefixOverrides="or">
-      status in (0, 1) and pro_id like concat('%', '${search}', '%') or pro_name like concat('%', '${search}', '%')
-    </trim>
-  </select>
-
   <resultMap id="collect" type="BrandDetail" extends="BaseResultMap">
     <collection property="brandList" ofType="com.qfedu.domain.entity.Brand" resultMap="com.qfedu.mapper.BrandManageMapper.BaseResultMap"/>
   </resultMap>
@@ -87,11 +73,6 @@
   <select id="selectById" resultMap="BaseResultMap">
     select * from brand_detail
     where pro_id=#{proId}
-  </select>
-
-  <select id="selectForAttr" resultType="java.lang.String">
-    select distinct attribute
-    from brand_detail
   </select>
 
 </mapper>

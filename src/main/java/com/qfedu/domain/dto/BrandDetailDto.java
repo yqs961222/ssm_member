@@ -9,7 +9,6 @@ import java.util.Date;
 @Data
 public class BrandDetailDto implements Serializable {
 
-    private  String keyword;//关键字
     private String brandName;
     private String proName;
     private BigDecimal oldPrice;

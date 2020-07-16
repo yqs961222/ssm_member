@@ -1,5 +1,6 @@
 package com.qfedu.controller;
 
+import com.qfedu.domain.dto.BrandDetailDto;
 import com.qfedu.domain.dto.ProDetailDto;
 import com.qfedu.domain.entity.BrandDetail;
 import com.qfedu.exception.ServiceException;
@@ -15,6 +16,7 @@ import java.util.List;
 
 /**
  * @Author: Jesse Y
+ * @Author: XTL
  * @Data: 2020-07-14 14:40
  */
 
@@ -26,6 +28,7 @@ public class BrandDetailController {
     BrandDetailService brandDetailService;
 
     /**
+     * Jesse
      * 通过属性来查询商品集合, 可以动态地接收请求以完成不同的数据传输
      *
      * @param attribute 动态的传入属性值
@@ -46,6 +49,7 @@ public class BrandDetailController {
     }
 
     /**
+     * Jesse
      * 通过模糊输入的search值, 可以模糊查找到想要的数据
      *
      * @param search 输入的模糊值
@@ -65,6 +69,7 @@ public class BrandDetailController {
     }
 
     /**
+     * Jesse
      * 查询出所有的属性
      *
      * @return 返回包含属性的集合
@@ -76,6 +81,7 @@ public class BrandDetailController {
     }
 
     /**
+     * Jesse
      * 通过商品的ID查询出对应的商品详情表
      *
      * @param proId 传入的商品ID
@@ -90,4 +96,80 @@ public class BrandDetailController {
             return ResponseEntity.error();
         }
     }
+
+    /**
+     * XTL
+     * 显示所有
+     * @param id 品牌id
+     * @param page 分页
+     * @param size 分页
+     * @return 状态码与结果集
+     */
+    @GetMapping("/list/{id}")
+    public ResponseEntity<List<BrandDetail>> showAll(@PathVariable() Integer id, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size) throws ServiceException {
+        List<BrandDetail> list = brandDetailService.selectAllById(id, page, size);
+        return ResponseEntity.success(list);
+    }
+
+    /**
+     * XTL
+     * 添加商品
+     * @param brandDetailDto
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseEntity<Integer> addBrandDetail(@RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
+        int count = brandDetailService.add(brandDetailDto);
+        return ResponseEntity.success(count);
+    }
+
+    /**
+     * XTL
+     * 批量删除
+     * @param ids 结果集
+     * @return
+     */
+    @PostMapping("/delete")
+    public ResponseEntity<Integer> deleteBath(@RequestParam List<Integer> ids) throws ServiceException {
+        int count = brandDetailService.deleteBath(ids);
+        return ResponseEntity.success(count);
+    }
+
+    /**
+     * XTL
+     * 删除
+     * @param id
+     * @return
+     */
+    @PostMapping("/del")
+    public ResponseEntity<Integer> deleteById(@RequestParam Integer id) throws ServiceException {
+        int count = brandDetailService.deleteById(id);
+        return ResponseEntity.success(count);
+    }
+
+    /**
+     * XTL
+     * 更新商品
+     * @param id
+     * @param brandDetailDto
+     * @return
+     */
+    @PostMapping("/update")
+    public ResponseEntity<Integer> updateBrandDetail(@RequestParam int id, @RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
+        int count = brandDetailService.updateBrandDetail(id, brandDetailDto);
+        return ResponseEntity.success(count);
+    }
+
+    /**
+     * XTL
+     * 封禁
+     * @param id
+     * @return
+     */
+    @PostMapping("/banned")
+    public ResponseEntity<Integer> updateBannedById(@RequestParam int id) throws ServiceException {
+        int count = brandDetailService.updateBannedById(id);
+        return ResponseEntity.success(count);
+    }
+
 }
