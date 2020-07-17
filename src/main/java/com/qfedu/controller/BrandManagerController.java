@@ -6,10 +6,7 @@ import com.qfedu.domain.entity.Brand;
 import com.qfedu.service.BrandSelectService;
 import com.qfedu.utils.ErrorStatus;
 import com.qfedu.utils.ResponseUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,6 +15,7 @@ import java.util.List;
  * @author FUTURE
  */
 @RestController
+@RequestMapping("/manager")
 public class BrandManagerController {
     @Resource
     BrandSelectService brandSelectService;
@@ -57,7 +55,7 @@ public class BrandManagerController {
      * @param brandDto
      * @return
      */
-    @PostMapping("/add3")
+    @PostMapping("/addBrand")
     public ResponseUtils<Integer> addBrand(BrandDto brandDto) {
         int count = brandSelectService.insertBrand(brandDto);
         if (count != 0) {
