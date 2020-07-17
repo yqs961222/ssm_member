@@ -35,7 +35,7 @@ public class BrandDetailController {
      * @return 返回一个响应值, 成功即输出结果, 失败则输出错误报告
      */
     @GetMapping("/select/{attribute}")
-    public ResponseEntity<List<BrandDetail>> selectByAttr(@PathVariable("attribute") String attribute) throws ServiceException {
+    public ResponseEntity<List<BrandDetail>> showByAttr(@PathVariable("attribute") String attribute) throws ServiceException {
         /*  int num = brandDetailService.selectNum();
             List<BrandDetail> brandDetails = brandDetailService.selectGetAttr();
             for (BrandDetail brandDetail : brandDetails) {
@@ -56,7 +56,7 @@ public class BrandDetailController {
      * @return 返回查找到的响应数据, 成功输出结果, 失败则输出错误报告
      */
     @GetMapping("/search")
-    public ResponseEntity<List<BrandDetail>> selectBySearch(String search) throws ServiceException {
+    public ResponseEntity<List<BrandDetail>> showBySearch(String search) throws ServiceException {
         // 通过输入的search, 可以查询到对应的对象集合
         List<BrandDetail> details = brandDetailService.selectBySearch(search);
 
@@ -75,7 +75,7 @@ public class BrandDetailController {
      * @return 返回包含属性的集合
      */
     @GetMapping("/attr")
-    public ResponseEntity<List<String>> selectForAttr() throws ServiceException {
+    public ResponseEntity<List<String>> showForAttr() throws ServiceException {
         List<String> strings = brandDetailService.selectForAttr();
         return ResponseEntity.success(strings);
     }
@@ -88,7 +88,7 @@ public class BrandDetailController {
      * @return 返回的是商品详情表对象的集合
      */
     @GetMapping("/product")
-    public ResponseEntity<ProDetailDto> selectByProId(Integer proId) throws ServiceException {
+    public ResponseEntity<ProDetailDto> showByProId(Integer proId) throws ServiceException {
         ProDetailDto proDetailDto = brandDetailService.selectByProId(proId);
         if (proDetailDto != null) {
             return ResponseEntity.success(proDetailDto);
@@ -155,7 +155,7 @@ public class BrandDetailController {
      * @return 更新成功返回1, 失败返回error
      */
     @PostMapping("/update")
-    public ResponseEntity<Integer> updateBrandDetail(@RequestParam int id, @RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
+    public ResponseEntity<Integer> modifyBrandDetail(@RequestParam int id, @RequestBody BrandDetailDto brandDetailDto) throws ServiceException {
         int count = brandDetailService.updateBrandDetail(id, brandDetailDto);
         return ResponseEntity.success(count);
     }
@@ -167,7 +167,7 @@ public class BrandDetailController {
      * @return 成功禁用或启用返回1, 失败返回error
      */
     @PostMapping("/banned")
-    public ResponseEntity<Integer> updateBannedById(@RequestParam int id) throws ServiceException {
+    public ResponseEntity<Integer> modifyBannedById(@RequestParam int id) throws ServiceException {
         int count = brandDetailService.updateBannedById(id);
         return ResponseEntity.success(count);
     }

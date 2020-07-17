@@ -27,7 +27,7 @@ public class BrandController {
      * @return 返回修改的影响行数
      */
     @PostMapping("/update")
-    public ResponseEntity<Integer> updateBrand(@RequestParam int id, @RequestBody Brand brand) throws ServiceException {
+    public ResponseEntity<Integer> modifyBrand(@RequestParam int id, @RequestBody Brand brand) throws ServiceException {
         // 传入ID, 和品牌对象, 修改品牌信息
         int ar = brandService.updateByBrand(id, brand);
 
